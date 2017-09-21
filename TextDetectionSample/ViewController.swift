@@ -199,7 +199,7 @@ extension ViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
         }
         
         // orientation を必ず設定すること
-        let handler = VNImageRequestHandler(ciImage: ciImage, orientation: Int32(orientation.rawValue))
+        let handler = VNImageRequestHandler(ciImage: ciImage, orientation: CGImagePropertyOrientation(rawValue: UInt32(Int32(orientation.rawValue)))!)
         let request = VNDetectTextRectanglesRequest() { request, error in
             // テキストブロックの矩形を取得
             let rects = request.results?.flatMap { result -> [CGRect] in
